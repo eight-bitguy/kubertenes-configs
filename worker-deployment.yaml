@@ -1,0 +1,53 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+      - name: worker-container
+        image: gcr.io/dehla-pakad-cover/dehla-pakad-api-master-1238e19
+        env:
+          - name: 'DB_CONNECTION'
+            value: 'mysql'
+          - name: 'DB_HOST'
+            value: mysql-service
+          - name: 'DB_PORT'
+            value: '3306'
+          - name: 'DB_DATABASE'
+            value: dehla_pakad_db
+          - name: 'DB_USERNAME'
+            value: dehla_pakad_user
+          - name: 'DB_PASSWORD'
+            value: dehla_pakad_pass
+          - name: 'BROADCAST_DRIVER'
+            value: pusher
+          - name: 'CACHE_DRIVER'
+            value: file
+          - name: 'PUSHER_APP_ID'
+            value: '1005799'
+          - name: 'PUSHER_APP_KEY'
+            value: 55d05ff09859c119f84f
+          - name: 'PUSHER_APP_SECRET'
+            value: ba322f9fb69ed7e3347a
+          - name: 'PUSHER_APP_CLUSTER'
+            value: ap2
+          - name: 'APP_KEY'
+            value: base64:+NrHNT21Ra72TjBnvMfkybgsWzwlCFboHYGwssyvAw8=
+          - name: 'JWT_SECRET'
+            value: 7iMKZiv5aZEaNJpmIsUb2vZgmSjI6ie2uEmrGkPoVc9xpbJSztPz8WzyEcewRlUH
+
+        command: ["/var/www/docker/worker.sh"]
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 22
+          name: ssh

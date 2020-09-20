@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: my-lb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-lb
+  template:
+    metadata:
+      labels:
+        app: my-lb
+    spec:
+      containers:
+      - name: my-lb
+        image: gcr.io/my-cluster-290007/eightbitguy-master-b8626f6
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 443
+          name: https
+        - containerPort: 22
+          name: ssh

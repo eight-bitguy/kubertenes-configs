@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-lb-service
+spec:
+  selector:
+    app: my-lb
+  ports:
+  - protocol: TCP
+    targetPort: 80
+    port: 80
+    name: http
+  - protocol: TCP
+    targetPort: 443
+    port: 443
+    name: https
+  type: LoadBalancer

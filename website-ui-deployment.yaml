@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: website-ui-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website-ui
+  template:
+    metadata:
+      labels:
+        app: website-ui
+    spec:
+      containers:
+      - name: website-ui
+        image: gcr.io/my-cluster-290007/eightbitguy-master-1654873
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 22
+          name: ssh

@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Service
+apiVersion: v1
+metadata:
+  name: worker-service
+spec:
+  selector:
+    app: worker
+  ports:
+  - protocol: TCP
+    targetPort: 8000
+    port: 8000
+    name: http
+  type: ClusterIP

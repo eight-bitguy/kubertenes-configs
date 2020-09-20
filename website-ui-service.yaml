@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Service
+apiVersion: v1
+metadata:
+  name: website-ui-service
+spec:
+  selector:
+    app: website-ui
+  ports:
+  - protocol: TCP
+    targetPort: 80
+    port: 80
+    name: http
+  type: ClusterIP

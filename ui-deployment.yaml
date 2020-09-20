@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ui-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui
+  template:
+    metadata:
+      labels:
+        app: ui
+    spec:
+      containers:
+      - name: ui-container
+        image: gcr.io/dehla-pakad-cover/dehla-pakad-ui-master-882896f
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 22
+          name: ssh

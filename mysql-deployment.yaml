@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7.22
+        ports:
+        - containerPort: 3306
+        # Ignore this for now. It will be explained in the next article
+        env:
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "true"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "dehla_pakad_pass"
+        - name: MYSQL_DATABASE
+          value: "dehla_pakad_db"
+        - name: MYSQL_USER
+          value: "dehla_pakad_user"
+        - name: MYSQL_PASSWORD
+          value: "dehla_pakad_pass"
