@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: website-ui
-        image: gcr.io/my-cluster-290007/eightbitguy-master-1654873
+        image: gcr.io/my-cluster-290007/eightbitguy-master-d0fd71f
         ports:
         - containerPort: 80
           name: http

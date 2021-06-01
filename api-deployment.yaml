@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-container
-        image: gcr.io/dehla-pakad-cover/dehla-pakad-api-master-1238e19
+        image: gcr.io/my-cluster-290007/dehla-pakad-api-master-30fab9b
         env:
           - name: 'DB_CONNECTION'
             value: 'mysql'
